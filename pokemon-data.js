@@ -53,9 +53,20 @@ $(document).ready(function() {
         );
     }
 
+    function registrirajMouseEvent(){
+        $('table tr').on('mouseenter', event => {
+            $(event.currentTarget).css('backgroundColor', 'magenta');
+        })
+        $('table tr').on('mouseleave', event => {
+            $(event.currentTarget).removeAttr('style');
+        })
+
+    }
+
     function odradiOstalo(){
         dodajPruge();
         dodajHeaderBoju();
+        registrirajMouseEvent();
         nakon2Sekunde();
         
     }
@@ -67,4 +78,10 @@ $(document).ready(function() {
     }
     // posanji request na (pokemon) API
     request.send();
+
+    //resize
+    $(window).resize(()=> {
+        console.log("Width: " + window.innerWidth);
+        console.log("Height: " + $(window).innerHeight());
+    })
 });
