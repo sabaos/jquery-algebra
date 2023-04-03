@@ -28,10 +28,16 @@ $(document).ready(function() {
         document.getElementById("div-pokemoni").innerHTML = html;
         $('[data-bs-toggle="popover"]').popover();
     }
+    //funkcija za bojanje
+    function dodajPruge(){
+        $('table tr').removeClass('pruge');
+        $('table tr:even').addClass('pruge');
+    }
 
     // funkcija koja ce se pozvati na loadanju stranice
     request.onload = function() {
         popuniPokemone();
+        dodajPruge();
     }
     // posanji request na (pokemon) API
     request.send();
