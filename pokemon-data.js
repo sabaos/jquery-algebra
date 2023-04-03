@@ -32,12 +32,38 @@ $(document).ready(function() {
     function dodajPruge(){
         $('table tr').removeClass('pruge');
         $('table tr:even').addClass('pruge');
+        }
+    function dodajHeaderBoju(){
+        $('th').css('color', 'darkBlue')
+        $('th').css('background-color', 'white')
+    }
+//izbacivanje sa početnim slovom P
+    function nakon2Sekunde(){
+        setTimeout(function(){
+            console.log('nakon 2 sekunde');
+            let myPokemonP = $("table td a:contains('p')").filter(function(){
+                return this.innerHTML.indexOf('p') == 0;
+            });
+            myPokemonP.closest('tr').remove();
+            dodajPruge();
+            console.log ('skrivenih: ' + myPokemonP.length);
+            //<div id="skriveni"></div>
+            $('<div id="skriveni"></div>').insertBefore($('#div-pokemoni')).text("Skrivenih: " + myPokemonP.length);
+        }, 2000
+        );
+    }
+
+    function odradiOstalo(){
+        dodajPruge();
+        dodajHeaderBoju();
+        nakon2Sekunde();
+        
     }
 
     // funkcija koja ce se pozvati na loadanju stranice
     request.onload = function() {
         popuniPokemone();
-        dodajPruge();
+        odradiOstalo();
     }
     // posanji request na (pokemon) API
     request.send();
