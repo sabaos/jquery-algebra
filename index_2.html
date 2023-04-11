@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokemon API</title>
+  <title>Pokemon API</title>  
+  <link href="./style.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-  <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <script id="lista-pokemona" type="text/x-handlebars">
@@ -15,11 +15,15 @@
         <tr>
           <th class="col-sm-12 d-none d-sm-block">Redni broj</th>
           <th class="col-sm-12">Ime pokemona</th>
+          <th class="hidden-xs col-sm-3">Prirodno staniste</th>
+					<th class="hidden-xs col-sm-4">Brzina rasta</th>
         </tr>
         {{#each pokemon}}
           <tr>
             <td class="col-sm-12 d-none d-sm-block">{{matematika @index '+' 1}}</td>
             <td class="col-sm-12"><a href="#" data-bs-title="{{this.name}}" data-bs-toggle="popover" data-bs-content="{{this.url}}">{{this.name}}</a></td>
+            <td class="col-sm-12">{{this.habitat}}</td>
+            <td class="col-sm-12">{{this.growth}}</td>
           </tr>
         {{/each}}
     </table>
